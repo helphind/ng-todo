@@ -13,19 +13,19 @@ export class ApiService {
     constructor(private http: HttpClient) {
     }
 
-    createProduct(productInfo: any) {
+    createProduct(productInfo: any) : Observable<Product>{
         const endpoint = this.API_BASE + 'products';
-        return this.http.post(endpoint, productInfo)
+        return this.http.post<Product>(endpoint, productInfo)
     }
 
-    updateProduct(productInfo: any) {
+    updateProduct(productInfo: any): Observable<Product> {
         const endpoint = this.API_BASE + 'products';
-        return this.http.post(endpoint, productInfo)
+        return this.http.post<Product>(endpoint, productInfo)
     }
 
-    getProductList() {
+    getProductList(): Observable<Product[]> {
         const endpoint = `${this.API_BASE}products`;
-        return this.http.get(endpoint)
+        return this.http.get<Product[]>(endpoint)
     }
 
     getProductDetails(productId: string): Observable<Product> {

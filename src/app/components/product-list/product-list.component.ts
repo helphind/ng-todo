@@ -13,14 +13,18 @@ export class ProductListComponent implements OnInit {
 
     private apiService = inject(ApiService);
 
-    productList!: Product;
+    productList!: Product[];
 
     ngOnInit() {
         this.getProductsList();
     }
 
     private getProductsList() {
-        this.apiService.getProductList();
+        this.apiService.getProductList().subscribe((res: Product[]) => {
+            this.productList = res
+        });
     }
 
 }
+`
+`
